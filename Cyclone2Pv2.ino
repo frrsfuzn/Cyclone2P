@@ -1,3 +1,16 @@
+/*
+ * Dibuat oleh Mochamad Farras Fauzan
+ * Terinspirasi oleh Jabrils di Youtube
+ *  [CARA MAIN]
+ *  1. Untuk memulai TEKAN dua tombol secara BERSAMAAN selama 2-3 detik dan lepas jika terlihat semua LED berkedip secara cepat
+ *  2. Kalian sudah memasuki mode gamePlay. untuk mendapatkan score permainan ini, player1 harus menekan tombol saat led hijau menyala di ujung mereka, sama juga untuk player2.
+ *  3. jika score sudah sampai 5 pada salah satu player, maka permainan selesai.
+ *  4. untuk keluar dari mode gamePlay, tekan dua tombol secara BERSAMAAN selama 1-2 detik dan lepas jika terlihat semua LED berkedip secara cepat
+ *  
+ *  tambahan:
+ *  kalian juga bisa mengatur kecepatan jalannya led dengan mengubah variabel interval.
+ *  
+ */
 int pinLed[] = {3,4,5,6,7,8,9,10,11};
 int counter=0;
 int player1=2;
@@ -14,10 +27,10 @@ boolean animasiMainMenu=true;
 boolean resetMillis=true;
 boolean resetMillisPlay=true;
 boolean runningPlay=true;
-const long interval = 50;
-const long intervalMainMenu = 500;
-const long intervalToPlay=2000;
-const long intervalToQuit=2000;
+const long interval = 30; //dalam millidetik
+const long intervalMainMenu = 500; //dalam millidetik
+const long intervalToPlay=2000; //dalam millidetik
+const long intervalToQuit=2000; //dalam millidetik
 unsigned long previousMillisMainMenu=0;
 unsigned long previousMillis=0;
 unsigned long previousMillisPlay=0;
@@ -134,7 +147,11 @@ void play(){
         delay(100);
       }
       runningPlay=true;
+      resetMillisPlay=true;
     }
+  }else{
+    runningPlay=true;
+    resetMillisPlay=true;
   }
   
   if(counter==8){
